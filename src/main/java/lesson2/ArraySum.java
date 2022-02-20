@@ -29,10 +29,12 @@ public class ArraySum {
     }
 
 
-        static void arrayMethod (String[][] arr) throws MyArraySizeException, MyArrayDataException {
+    static void arrayMethod(String[][] arr) throws MyArraySizeException, MyArrayDataException {
+
             int sum = 0;
-            if (arr.length != 4)
-                throw new MyArraySizeException(); {
+        try { if (arr.length != 4)
+                throw new MyArraySizeException();
+            {
                 for (int i = 0; i < arr.length; i++) {
                     if (arr[i].length != 4) throw new MyArraySizeException();
                     for (int j = 0; j < arr[i].length; j++) {
@@ -47,8 +49,9 @@ public class ArraySum {
                 System.out.println(sum);
             }
 
-
+        } catch () {
         }
     }
+}
 
 
