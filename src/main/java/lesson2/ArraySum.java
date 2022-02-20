@@ -23,34 +23,49 @@ public class ArraySum {
                 {"1", "1", "1", "1"},
         };
 
-        arrayMethod(arrayValid);
-        arrayMethod(arrayUnsize);
-        arrayMethod(arrayData);
+       try {
+           arrayMethod(arrayValid);
+       } catch (MyArraySizeException e) {
+           e.printStackTrace();
+       } catch (MyArrayDataException e) {
+           e.printStackTrace();
+       }
+        try {
+            arrayMethod(arrayUnsize);
+        } catch (MyArraySizeException e) {
+            e.printStackTrace();
+        } catch (MyArrayDataException e) {
+            e.printStackTrace();
+        }
+        try {
+           arrayMethod(arrayData);
+       } catch (MyArraySizeException e) {
+           e.printStackTrace();
+       } catch (MyArrayDataException e) {
+           e.printStackTrace();
+       }
     }
 
 
     static void arrayMethod(String[][] arr) throws MyArraySizeException, MyArrayDataException {
-
-            int sum = 0;
-        try { if (arr.length != 4)
-                throw new MyArraySizeException();
-            {
-                for (int i = 0; i < arr.length; i++) {
-                    if (arr[i].length != 4) throw new MyArraySizeException();
-                    for (int j = 0; j < arr[i].length; j++) {
-                        try {
-                            sum += Integer.parseInt(arr[i][j]);
-                        } catch (Exception e) {
-                            throw new MyArrayDataException(i, j);
-                        }
-
+        int sum = 0;
+        if (arr.length != 4)
+               throw new MyArraySizeException();
+        {
+            for (int i = 0; i < arr.length; i++) {
+                if (arr[i].length != 4) throw new MyArraySizeException();
+                for (int j = 0; j < arr[i].length; j++) {
+                    try {
+                        sum += Integer.parseInt(arr[i][j]);
+                    } catch (Exception e) {
+                        throw new MyArrayDataException(i, j);
                     }
-                }
-                System.out.println(sum);
-            }
 
-        } catch () {
+                }
+            }
+            System.out.println(sum);
         }
+
     }
 }
 
