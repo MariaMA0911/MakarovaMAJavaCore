@@ -1,15 +1,14 @@
 package lesson5;
 
-import java.io.Serializable;
-import java.util.ArrayList;
-
-public class FileObject implements Serializable {
-   private String title;
-   private Integer valueOne;
+public class FileObject {
+    private Integer valueOne;
     private Integer valueTwo;
+    private Integer valueThree;
 
-    public String getTitle() {
-        return title;
+    public FileObject(Integer valueOne, Integer valueTwo, Integer valueThree) {
+        this.valueOne = valueOne;
+        this.valueTwo = valueTwo;
+        this.valueThree = valueThree;
     }
 
     public Integer getValueOne() {
@@ -20,22 +19,8 @@ public class FileObject implements Serializable {
         return valueTwo;
     }
 
-    public FileObject(String title, Integer valueOne, Integer valueTwo) {
-        this.title = title;
-        this.valueOne = valueOne;
-        this.valueTwo = valueTwo;
-
-
-    }
-    @Override
-    public String toString (){
-        return "FileObject{" +
-                "title='" + title + '\'' +
-                ", valueOne=" + valueOne +
-                ", valueTwo=" + valueTwo  +
-                '}';
-    }
+    public Integer getValueThree() {
+        return valueThree;
     }
 
-
-
+}
