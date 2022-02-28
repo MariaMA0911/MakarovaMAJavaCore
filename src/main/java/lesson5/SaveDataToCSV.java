@@ -1,32 +1,23 @@
 package lesson5;
 
-import java.io.FileWriter;
-import java.io.IOException;
-import java.util.ArrayList;
-
 public class SaveDataToCSV {
-    public static void main(String[] args) {
+  /*  1. Реализовать сохранение данных в csv файл;
+2. Реализовать загрузку данных из csv файла. Файл читается целиком.
+    Структура csv файла:
+            | Строка заголовок с набором столбцов |
+            | Набор строк с целочисленными значениями |
+            | * Разделитель между столбцами - символ точка с запятой (;) |
 
-    ArrayList<FileObject> fileObjectArrayList = new ArrayList<>(5);
-    FileObject fileObject1 = new FileObject("Value1", 100, 300);
-    FileObject fileObject2 = new FileObject("Value2", 200, 400);
-    FileObject fileObject3 = new FileObject("Value3", 123, 500);
+    Пример:
+    Value 1;Value 2;Value 3
+            100;200;123
+            300,400,500
+    Для хранения данных использовать класс вида:
+    public class AppData {
+        private String[] header;
+        private int[][] data;
 
-        fileObjectArrayList.add(fileObject1);
-        fileObjectArrayList.add(fileObject2);
-        fileObjectArrayList.add(fileObject3);
-
-}
-
-    public static void writer() throws IOException {
-        //пишем в fileCSV.csv
-        try (FileWriter writer = new FileWriter("src/main/resources/fileCSV.csv");){
-            // объекты
-              for(FileObject fileObject : fileObjectArrayList) {
-                writer.write(fileObject.getTitle() + ";" + fileObject.getValueOne()
-                        + ";" + fileObject.getValueTwo() + ";"+ System.getProperty("line.separator"));
-            }
-        }
+        // ...
     }
-
+    Если выполняется save(AppData data), то старые данные в файле полностью перезаписываются.*/
 }
