@@ -1,39 +1,63 @@
 package lesson7;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import okhttp3.ResponseBody;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
 public class WeatherResponse {
 
     //3. Реализовать вывод погоды на следующие 5 дней в формате
     //| В городе CITY на дату DATE ожидается WEATHER_TEXT, температура - TEMPERATURE
-    private String LocalObservationDateTime;//дата
-    private String WeatherText;//текст
+    private String LocalObservationDateTime;//!!!дата
+    private float EpochTime;
+    private String WeatherText;//!!! инфа о погоде
+    private float WeatherIcon;
+    private boolean HasPrecipitation;
+    private String PrecipitationType = null;
+    private boolean IsDayTime;
     Temperature TemperatureObject;
-
-    public WeatherResponse(String localObservationDateTime, String weatherText, Temperature temperatureObject) {
-        LocalObservationDateTime = localObservationDateTime;
-        WeatherText = weatherText;
-        TemperatureObject = temperatureObject;
-    }
+    private String MobileLink;//!!!
+    private String Link;
 
 
-// Getter Methods
+    // Getter Methods
 
     public String getLocalObservationDateTime() {
         return LocalObservationDateTime;
+    }
+
+    public float getEpochTime() {
+        return EpochTime;
     }
 
     public String getWeatherText() {
         return WeatherText;
     }
 
+    public float getWeatherIcon() {
+        return WeatherIcon;
+    }
+
+    public boolean getHasPrecipitation() {
+        return HasPrecipitation;
+    }
+
+    public String getPrecipitationType() {
+        return PrecipitationType;
+    }
+
+    public boolean getIsDayTime() {
+        return IsDayTime;
+    }
 
     public Temperature getTemperature() {
         return TemperatureObject;
     }
 
+    public String getMobileLink() {
+        return MobileLink;
+    }
+
+    public String getLink() {
+        return Link;
+    }
 
     // Setter Methods
 
@@ -41,69 +65,44 @@ public class WeatherResponse {
         this.LocalObservationDateTime = LocalObservationDateTime;
     }
 
+    public void setEpochTime(float EpochTime) {
+        this.EpochTime = EpochTime;
+    }
 
     public void setWeatherText(String WeatherText) {
         this.WeatherText = WeatherText;
+    }
+
+    public void setWeatherIcon(float WeatherIcon) {
+        this.WeatherIcon = WeatherIcon;
+    }
+
+    public void setHasPrecipitation(boolean HasPrecipitation) {
+        this.HasPrecipitation = HasPrecipitation;
+    }
+
+    public void setPrecipitationType(String PrecipitationType) {
+        this.PrecipitationType = PrecipitationType;
+    }
+
+    public void setIsDayTime(boolean IsDayTime) {
+        this.IsDayTime = IsDayTime;
     }
 
     public void setTemperature(Temperature TemperatureObject) {
         this.TemperatureObject = TemperatureObject;
     }
 
-}
-
-@JsonIgnoreProperties(ignoreUnknown = true)
-class Temperature {
-    Metric MetricObject;
-    // Getter Methods
-
-    public Metric getMetric() {
-        return MetricObject;
+    public void setMobileLink(String MobileLink) {
+        this.MobileLink = MobileLink;
     }
 
-
-    // Setter Methods
-
-    public void setMetric(Metric MetricObject) {
-        this.MetricObject = MetricObject;
-    }
-
-
-}
-
-@JsonIgnoreProperties(ignoreUnknown = true)
-class Metric {
-    private float Value;
-    private String Unit;
-    private float UnitType;
-
-
-    // Getter Methods
-
-    public float getValue() {
-        return Value;
-    }
-
-    public String getUnit() {
-        return Unit;
-    }
-
-    public float getUnitType() {
-        return UnitType;
-    }
-
-    // Setter Methods
-
-    public void setValue(float Value) {
-        this.Value = Value;
-    }
-
-    public void setUnit(String Unit) {
-        this.Unit = Unit;
-    }
-
-    public void setUnitType(float UnitType) {
-        this.UnitType = UnitType;
+    public void setLink(String Link) {
+        this.Link = Link;
     }
 }
+
+
+
+
 

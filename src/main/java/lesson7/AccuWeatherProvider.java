@@ -1,5 +1,6 @@
 package lesson7;
 
+import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lesson7.enums.Periods;
 import okhttp3.HttpUrl;
@@ -9,6 +10,7 @@ import okhttp3.Response;
 
 
 import java.io.IOException;
+import java.io.StringReader;
 
 public class AccuWeatherProvider implements WeatherProvider  {
 
@@ -20,7 +22,8 @@ public class AccuWeatherProvider implements WeatherProvider  {
 
     private final OkHttpClient client = new OkHttpClient();
     private final ObjectMapper objectMapper = new ObjectMapper();
-    private Object WeatherResponse;
+
+
 
     @Override
     public void getWeather(Periods periods) throws IOException {
@@ -40,17 +43,22 @@ public class AccuWeatherProvider implements WeatherProvider  {
                     .url(url)
                     .build();
 
-            Response response = client.newCall(request).execute();
-            System.out.println(response.body().string());
-            
-            
+           Response response = client.newCall(request).execute();
+           System.out.println(response.body().string());
+
+           // String jsonResponse = client.newCall(request).execute().body().string();
+           // System.out.println(jsonResponse);
+
 
             // TODO: Сделать в рамках д/з вывод более приятным для пользователя.
             //  Создать класс WeatherResponse, десериализовать ответ сервера в экземпляр класса
             //  Вывести пользователю только текущую температуру в C и сообщение (weather text)
+           String jsonString = "{ \"LocalObservationDateTime\" : \"2022-03-23T18:57:00+03:00\", \"WeatherText\" : \"Clear\", \"Temperature\":{\"Metric\":{\"Value\":4.0,\"Unit\":\"C\",\"UnitType\":17}}";
 
-            String json = objectMapper.writeValueAsString(WeatherResponse);
-            System.out.println(json);
+            ObjectMapper mapper = new ObjectMapper();
+
+         WeatherResponse weatherResponse = ObjectMapper.readValue(response, WeatherResponse.class);
+
         }
     }
 
