@@ -43,8 +43,8 @@ public class AccuWeatherProvider implements WeatherProvider  {
                     .url(url)
                     .build();
 
-           Response response = client.newCall(request).execute();
-           System.out.println(response.body().string());
+          Response response = client.newCall(request).execute();
+          System.out.println(response.body().string());
 
            // String jsonResponse = client.newCall(request).execute().body().string();
            // System.out.println(jsonResponse);
@@ -53,11 +53,13 @@ public class AccuWeatherProvider implements WeatherProvider  {
             // TODO: Сделать в рамках д/з вывод более приятным для пользователя.
             //  Создать класс WeatherResponse, десериализовать ответ сервера в экземпляр класса
             //  Вывести пользователю только текущую температуру в C и сообщение (weather text)
-           String jsonString = "{ \"LocalObservationDateTime\" : \"2022-03-23T18:57:00+03:00\", \"WeatherText\" : \"Clear\", \"Temperature\":{\"Metric\":{\"Value\":4.0,\"Unit\":\"C\",\"UnitType\":17}}";
+            String jsonResponse = client.newCall(request).execute().body().string();
+            System.out.println(jsonResponse);
+            ObjectMapper mapper1 = new ObjectMapper();
+            StringReader reader = new StringReader(jsonResponse);
 
-            ObjectMapper mapper = new ObjectMapper();
-
-         WeatherResponse weatherResponse = ObjectMapper.readValue(response, WeatherResponse.class);
+            WeatherResponse weatherResponse = mapper1.readValue(reader, WeatherResponse.class);
+            System.out.println(weatherResponse);
 
         }
     }
