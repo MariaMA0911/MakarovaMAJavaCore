@@ -6,6 +6,7 @@ package lesson7;
         import okhttp3.Request;
         import okhttp3.Response;
         import java.io.IOException;
+        import java.io.StringReader;
 
 public class AccuWeatherProvider implements WeatherProvider {
 
@@ -35,20 +36,23 @@ public class AccuWeatherProvider implements WeatherProvider {
                     .addHeader("accept", "application/json")
                     .url(url)
                     .build();
-
             Response response = client.newCall(request).execute();
-            System.out.println(response.body().string());
+            //System.out.println(response.body().string());
+            String jsonResponse = response.body().string();
+            System.out.println(jsonResponse);
+            ObjectMapper mapper = new ObjectMapper();
+            WeatherResponse weatherResponse = mapper.readValue(jsonResponse, WeatherResponse.class);
+            System.out.println("+++++++++++++++++++++++++++++++++");
+            System.out.println(weatherResponse);
             // TODO: Сделать в рамках д/з вывод более приятным для пользователя.
             //  Создать класс WeatherResponse, десериализовать ответ сервера в экземпляр класса
             //  Вывести пользователю только текущую температуру в C и сообщение (weather text)
-            System.out.println("+++++++++++++++++++++++++++++++++++++++++++++++++++++++");
-            String jsonString = "{\"WeatherText\":\"Cloudy\"}";
-           ObjectMapper mapper = new ObjectMapper();
-            WeatherResponse weatherResponse = mapper.readValue(jsonString, WeatherResponse.class);
-            System.out.println(weatherResponse);
 
 
-        } else if(periods.equals(Periods.FIVE_DAYS)){
+
+
+
+         } else if(periods.equals(Periods.FIVE_DAYS)){
 
         }
     }
