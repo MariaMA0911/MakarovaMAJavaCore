@@ -1,19 +1,21 @@
 package lesson7;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
+
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class WeatherResponse {
 
     //3. Реализовать вывод погоды на следующие 5 дней в формате
     //| В городе CITY на дату DATE ожидается WEATHER_TEXT, температура - TEMPERATURE
-    @JsonProperty("на дату: ")
+
     private String LocalObservationDateTime;//!!!дата
     @JsonIgnore
     private float EpochTime;
-    @JsonProperty(" ожидается ")
+
     private String WeatherText;//!!! инфа о погоде
     @JsonIgnore
     private float WeatherIcon;
@@ -23,7 +25,7 @@ public class WeatherResponse {
     private String PrecipitationType = null;
     @JsonIgnore
     private boolean IsDayTime;
-    @JsonProperty(" температура ")
+
 
     Temperature TemperatureObject;
     @JsonIgnore
