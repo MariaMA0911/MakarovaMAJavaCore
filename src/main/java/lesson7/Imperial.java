@@ -1,7 +1,6 @@
 package lesson7;
 
-public class Metric {
-
+public class Imperial {
         private float Value;
         private String Unit;
         private float UnitType;
