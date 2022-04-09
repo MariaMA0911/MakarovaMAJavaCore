@@ -54,7 +54,7 @@ public class AccuWeatherProvider implements WeatherProvider {
             StringReader reader = new StringReader(response);
 
             WeatherResponse weatherResponse = mapper1.readValue(reader, WeatherResponse.class);
-            //System.out.println();
+
         }
         //else if(periods.equals(Periods.FIVE_DAYS)){        }
     }
