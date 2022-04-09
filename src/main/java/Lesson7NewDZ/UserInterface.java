@@ -1,4 +1,4 @@
-package lesson7;
+package Lesson7NewDZ;
 
 import java.io.IOException;
 import java.util.Scanner;

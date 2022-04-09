@@ -1,28 +1,25 @@
-package lesson7;
+package Lesson7NewDZ;
 
 import java.util.HashMap;
 import java.util.Map;
 //import javax.annotation.Generated;
-import com.fasterxml.jackson.annotation.JsonAnyGetter;
-import com.fasterxml.jackson.annotation.JsonAnySetter;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+
+import com.fasterxml.jackson.annotation.*;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
-@JsonPropertyOrder({
-        "LocalObservationDateTime",
-        "EpochTime",
-        "WeatherText",
-        "WeatherIcon",
-        "HasPrecipitation",
-        "PrecipitationType",
-        "IsDayTime",
-        "Temperature",
-        "MobileLink",
-        "Link"
-})
+@JsonIgnoreProperties(ignoreUnknown = true)
+//@JsonPropertyOrder({
+//        "LocalObservationDateTime",
+ //       "EpochTime",
+ //       "WeatherText",
+  //      "WeatherIcon",
+  //      "HasPrecipitation",
+  //      "PrecipitationType",
+  //      "IsDayTime",
+  //      "Temperature",
+  //      "MobileLink",
+  //      "Link"
+//})
 //@Generated("jsonschema2pojo")
 public class WeatherResponse {
 
@@ -37,7 +34,7 @@ public class WeatherResponse {
     @JsonProperty("HasPrecipitation")
     private Boolean hasPrecipitation;
     @JsonProperty("PrecipitationType")
-    private Object precipitationType;
+    private String precipitationType;
     @JsonProperty("IsDayTime")
     private Boolean isDayTime;
     @JsonProperty("Temperature")
@@ -100,12 +97,12 @@ public class WeatherResponse {
     }
 
     @JsonProperty("PrecipitationType")
-    public Object getPrecipitationType() {
+    public String getPrecipitationType() {
         return precipitationType;
     }
 
     @JsonProperty("PrecipitationType")
-    public void setPrecipitationType(Object precipitationType) {
+    public void setPrecipitationType(String precipitationType) {
         this.precipitationType = precipitationType;
     }
 
@@ -160,9 +157,3 @@ public class WeatherResponse {
     }
 
 }
-
-
-
-
-
-

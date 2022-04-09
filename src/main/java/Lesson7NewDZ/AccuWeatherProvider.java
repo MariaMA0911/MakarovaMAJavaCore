@@ -1,12 +1,15 @@
-package lesson7;
-        import com.fasterxml.jackson.databind.ObjectMapper;
-        import lesson7.enums.Periods;
-        import okhttp3.HttpUrl;
-        import okhttp3.OkHttpClient;
-        import okhttp3.Request;
-        import okhttp3.Response;
-        import java.io.IOException;
-        import java.io.StringReader;
+package Lesson7NewDZ;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
+import lesson6.Example;
+import okhttp3.HttpUrl;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
+
+
+import java.io.IOException;
+import java.io.StringReader;
 
 public class AccuWeatherProvider implements WeatherProvider {
 
@@ -36,25 +39,24 @@ public class AccuWeatherProvider implements WeatherProvider {
                     .addHeader("accept", "application/json")
                     .url(url)
                     .build();
-            Response response = client.newCall(request).execute();
-            //System.out.println(response.body().string());
-            String jsonResponse = response.body().string();
-            System.out.println(jsonResponse);
-            ObjectMapper mapper = new ObjectMapper();
-            WeatherResponse weatherResponse = mapper.readValue(jsonResponse, WeatherResponse.class);
-            System.out.println("+++++++++++++++++++++++++++++++++");
-            System.out.println(weatherResponse);
+
+           // Response response = client.newCall(request).execute();
+          //  System.out.println(response.body().string());
+
+            String response = client.newCall(request).execute().body().string();
+            System.out.println(response);
             // TODO: Сделать в рамках д/з вывод более приятным для пользователя.
             //  Создать класс WeatherResponse, десериализовать ответ сервера в экземпляр класса
             //  Вывести пользователю только текущую температуру в C и сообщение (weather text)
 
+            System.out.println("+++++++++++++++++++++++++++++++++++++");
+            ObjectMapper mapper1 = new ObjectMapper();
+            StringReader reader = new StringReader(response);
 
-
-
-
-         } else if(periods.equals(Periods.FIVE_DAYS)){
-
+            WeatherResponse weatherResponse = mapper1.readValue(reader, WeatherResponse.class);
+            //System.out.println();
         }
+        //else if(periods.equals(Periods.FIVE_DAYS)){        }
     }
 
     public String detectCityKey() throws IOException {

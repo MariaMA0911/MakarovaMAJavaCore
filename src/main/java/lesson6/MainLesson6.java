@@ -1,11 +1,13 @@
 package lesson6;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import okhttp3.HttpUrl;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.StringReader;
 import java.util.Properties;
 
 public class MainLesson6 {
@@ -21,18 +23,19 @@ public class MainLesson6 {
     static Properties prop = new Properties();
 
     public static void main(String[] args) throws IOException {
+        //загружаем проперти
         loadProperties();
         OkHttpClient client = new OkHttpClient();
 
         HttpUrl url = new HttpUrl.Builder()
                 .scheme("http")
-                .host(prop.getProperty("BASE_HOST"))
-                .addPathSegment(prop.getProperty("FORECAST"))
-                .addPathSegment(prop.getProperty("API_VERSION"))
-                .addPathSegment(prop.getProperty("FORECAST_TYPE"))
-                .addPathSegment(prop.getProperty("FORECAST_PERIOD"))
-                .addPathSegment(prop.getProperty("SAINT_PETERSBURG_KEY"))
-                .addQueryParameter("apikey", prop.getProperty("API_KEY"))
+                .host(prop.getProperty("BASE_HOST1"))
+                .addPathSegment(prop.getProperty("FORECAST1"))
+                .addPathSegment(prop.getProperty("API_VERSION1"))
+                .addPathSegment(prop.getProperty("FORECAST_TYPE1"))
+                .addPathSegment(prop.getProperty("FORECAST_PERIOD1"))
+                .addPathSegment(prop.getProperty("SAINT_PETERSBURG_KEY1"))
+                .addQueryParameter("apikey", prop.getProperty("API_KEY1"))
                 .addQueryParameter("language", "ru-ru")
                 .addQueryParameter("metric", "true")
                 .build();
@@ -47,6 +50,12 @@ public class MainLesson6 {
 
         String jsonResponse = client.newCall(requesthttp).execute().body().string();
         System.out.println(jsonResponse);
+
+        ObjectMapper mapper = new ObjectMapper();
+        StringReader reader = new StringReader(jsonResponse);
+
+        Example example = mapper.readValue(reader, Example.class);
+        System.out.println();
 
     }
 

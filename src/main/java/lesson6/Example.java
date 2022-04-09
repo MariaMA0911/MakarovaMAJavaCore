@@ -1,8 +1,11 @@
-package lesson7;
+package lesson6;
+
+import java.util.ArrayList;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
-//import javax.annotation.Generated;
+import javax.annotation.Generated;
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import com.fasterxml.jackson.annotation.JsonAnySetter;
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -12,37 +15,37 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
-        "Metric",
-        "Imperial"
+        "Headline",
+        "DailyForecasts"
 })
-//@Generated("jsonschema2pojo")
-public class Temperature {
+@Generated("jsonschema2pojo")
+public class Example {
 
-    @JsonProperty("Metric")
-    private Metric metric;
-    @JsonProperty("Imperial")
-    private Imperial imperial;
+    @JsonProperty("Headline")
+    private Headline headline;
+    @JsonProperty("DailyForecasts")
+    private List<DailyForecast> dailyForecasts = null;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
-    @JsonProperty("Metric")
-    public Metric getMetric() {
-        return metric;
+    @JsonProperty("Headline")
+    public Headline getHeadline() {
+        return headline;
     }
 
-    @JsonProperty("Metric")
-    public void setMetric(Metric metric) {
-        this.metric = metric;
+    @JsonProperty("Headline")
+    public void setHeadline(Headline headline) {
+        this.headline = headline;
     }
 
-    @JsonProperty("Imperial")
-    public Imperial getImperial() {
-        return imperial;
+    @JsonProperty("DailyForecasts")
+    public List<DailyForecast> getDailyForecasts() {
+        return dailyForecasts;
     }
 
-    @JsonProperty("Imperial")
-    public void setImperial(Imperial imperial) {
-        this.imperial = imperial;
+    @JsonProperty("DailyForecasts")
+    public void setDailyForecasts(List<DailyForecast> dailyForecasts) {
+        this.dailyForecasts = dailyForecasts;
     }
 
     @JsonAnyGetter
@@ -56,3 +59,4 @@ public class Temperature {
     }
 
 }
+

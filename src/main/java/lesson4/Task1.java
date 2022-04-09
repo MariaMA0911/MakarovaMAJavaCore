@@ -12,7 +12,7 @@ public class Task1 {
 
     HashSet<String> unique = new HashSet<String>(words);
 
-    System.out.println("Уникальные значения: " + unique.toString());
+   // System.out.println("Уникальные значения: " + unique.toString());
 
      for (String key : unique) {
         System.out.println(key + " повторяется " + Collections.frequency(words, key) + " раз(а)");

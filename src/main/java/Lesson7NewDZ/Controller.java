@@ -1,7 +1,4 @@
-package lesson7;
-
-import lesson7.enums.Functionality;
-import lesson7.enums.Periods;
+package Lesson7NewDZ;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -9,7 +6,7 @@ import java.util.Map;
 
 public class Controller {
 
-    WeatherProvider weatherProvider = (WeatherProvider) new AccuWeatherProvider();
+    WeatherProvider weatherProvider = new AccuWeatherProvider();
     Map<Integer, Functionality> variantResult = new HashMap();
 
     public Controller() {

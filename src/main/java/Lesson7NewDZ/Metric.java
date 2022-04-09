@@ -1,8 +1,8 @@
-package lesson7;
+package Lesson7NewDZ;
 
 import java.util.HashMap;
 import java.util.Map;
-//import javax.annotation.Generated;
+import javax.annotation.Generated;
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import com.fasterxml.jackson.annotation.JsonAnySetter;
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -16,8 +16,8 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
         "Unit",
         "UnitType"
 })
-//@Generated("jsonschema2pojo")
-public class Imperial {
+@Generated("jsonschema2pojo")
+public class Metric {
 
     @JsonProperty("Value")
     private Double value;

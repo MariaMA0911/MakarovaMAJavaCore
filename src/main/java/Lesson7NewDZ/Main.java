@@ -1,6 +1,6 @@
-package lesson7;
+package Lesson7NewDZ;
 
-public class MainApp {
+public class Main {
     public static void main(String[] args) {
         UserInterface userInterface = new UserInterface();
         userInterface.runApplication();
