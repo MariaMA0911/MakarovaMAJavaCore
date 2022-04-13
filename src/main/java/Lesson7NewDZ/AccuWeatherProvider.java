@@ -1,7 +1,6 @@
 package Lesson7NewDZ;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import lesson6.Example;
 import okhttp3.HttpUrl;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -10,6 +9,7 @@ import okhttp3.Response;
 
 import java.io.IOException;
 import java.io.StringReader;
+
 
 public class AccuWeatherProvider implements WeatherProvider {
 
@@ -43,15 +43,15 @@ public class AccuWeatherProvider implements WeatherProvider {
            // Response response = client.newCall(request).execute();
           //  System.out.println(response.body().string());
 
-            String response = client.newCall(request).execute().body().string();
-            System.out.println(response);
+            String response1 = client.newCall(request).execute().body().string();
+            System.out.println(response1);
             // TODO: Сделать в рамках д/з вывод более приятным для пользователя.
             //  Создать класс WeatherResponse, десериализовать ответ сервера в экземпляр класса
             //  Вывести пользователю только текущую температуру в C и сообщение (weather text)
 
             System.out.println("+++++++++++++++++++++++++++++++++++++");
             ObjectMapper mapper1 = new ObjectMapper();
-            StringReader reader = new StringReader(response);
+            StringReader reader = new StringReader(response1);
 
             WeatherResponse weatherResponse = mapper1.readValue(reader, WeatherResponse.class);
 
